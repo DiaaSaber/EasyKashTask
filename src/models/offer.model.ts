@@ -1,18 +1,9 @@
 import { Model, Table, AutoIncrement, PrimaryKey, Column, AllowNull, NotEmpty, ForeignKey, BelongsTo, CreatedAt } from "sequelize-typescript";
 import Seller from "./seller.model";
 
-// export interface OfferI {
-//     id?: number | null
-//     title: string
-//     fees: number
-//     amount: number
-//     last_updated: Date
-// }
-
 @Table(
     {
-        tableName: "offer",
-        timestamps: true
+        tableName: "offer"
     }
 )
 export default class Offer extends Model<Offer>{
