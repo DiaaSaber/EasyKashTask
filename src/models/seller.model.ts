@@ -1,9 +1,11 @@
-import { Model, Table, AutoIncrement, PrimaryKey, Column, AllowNull, NotEmpty } from "sequelize-typescript";
+import { Model, Table, AutoIncrement, PrimaryKey, Column, AllowNull, NotEmpty, HasMany } from "sequelize-typescript";
+import Offer from "./offer.model";
 
-export interface SellerI{
-    id?: number | null
-    name: string
-}
+// export interface SellerI{
+//     id?: number | null
+//     name: string
+//     offer: Offer
+// }
 
 @Table(
     {
@@ -11,7 +13,7 @@ export interface SellerI{
         timestamps: true
     }
 )
-export default class Seller extends Model implements SellerI{
+export default class Seller extends Model<Seller>{
     
     @AutoIncrement
     @PrimaryKey
@@ -22,4 +24,7 @@ export default class Seller extends Model implements SellerI{
     @NotEmpty
     @Column
     name!: string
+
+    @HasMany(() => Offer)
+    offer!: Offer[];
 }
