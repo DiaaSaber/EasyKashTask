@@ -22,12 +22,8 @@ export class AppComponent {
   getUsers(){
     this.randomUser.getData(this.page).subscribe((data) =>{
       console.log(data)
-      // this.data = data.results
-      // this.totalRecords =data.results.length
       this.data = data.transaction.rows;
       this.totalRecords = data.transaction.count;
-      this.perPage = data.paging;
-      console.log("PerPage : " + this.perPage);
     })
   }
 
@@ -36,8 +32,6 @@ export class AppComponent {
     console.log(this.page);
     this.randomUser.getData(this.page).subscribe((data) =>{
       console.log(data)
-      // this.data = data.results
-      // this.totalRecords =data.results.length
       this.data = data.transaction.rows;
       this.totalRecords = data.transaction.count;
     })

@@ -10,7 +10,7 @@ const app = require('../src/app.ts')
 
 describe("Get /listall", function() {
 	it("should return status 200", function(done) {
-            setTimeout(done, 300);
+            setTimeout(done, 1000);
             chai.request(app)
             .get('/listall')
             .end(function (err:Error, res:Response) {
