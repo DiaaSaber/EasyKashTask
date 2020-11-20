@@ -3,11 +3,18 @@ import { sequelize } from "./database"
 import Offer from "./models/offer.model";
 import Seller from "./models/seller.model";
 import routes from './routes/transactions';
+import * as cors from 'cors';
 
 const app = express()
 const port = 3000;
 app.use('/', routes);
 
+app.use(cors());
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.listen(port, () => {
     console.log(`App runing at http://localhost:${port}`);
     sequelize.authenticate().then(async () => {
