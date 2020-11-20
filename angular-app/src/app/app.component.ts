@@ -9,7 +9,7 @@ import { RandomUserService } from './services/random-user.service'
 export class AppComponent {
 
   data:Array<any>;
-  totalRecords: Number;
+  totalRecords: String;
   page:Number=1;
 
   constructor(private randomUser: RandomUserService){
@@ -20,7 +20,7 @@ export class AppComponent {
     this.randomUser.getData().subscribe((data) =>{
       console.log(data)
       this.data = data.results
-      this.totalRecords = data.results.length
+      this.totalRecords =data.results.length
     })
   }
 
