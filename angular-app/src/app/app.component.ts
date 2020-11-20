@@ -9,18 +9,37 @@ import { RandomUserService } from './services/random-user.service'
 export class AppComponent {
 
   data:Array<any>;
+  pageItems:Number;
   totalRecords: String;
   page:Number=1;
+  perPage:Number;
+  seller_id:Number;
 
   constructor(private randomUser: RandomUserService){
     this.data = new Array<any>();
   }
 
   getUsers(){
-    this.randomUser.getData().subscribe((data) =>{
+    this.randomUser.getData(this.page).subscribe((data) =>{
       console.log(data)
-      this.data = data.results
-      this.totalRecords =data.results.length
+      // this.data = data.results
+      // this.totalRecords =data.results.length
+      this.data = data.transaction.rows;
+      this.totalRecords = data.transaction.count;
+      this.perPage = data.paging;
+      console.log("PerPage : " + this.perPage);
+    })
+  }
+
+  pageChange($event) {
+    this.page = $event;
+    console.log(this.page);
+    this.randomUser.getData(this.page).subscribe((data) =>{
+      console.log(data)
+      // this.data = data.results
+      // this.totalRecords =data.results.length
+      this.data = data.transaction.rows;
+      this.totalRecords = data.transaction.count;
     })
   }
 

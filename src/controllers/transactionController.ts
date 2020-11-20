@@ -27,8 +27,8 @@ class transactionController {
             const response = {
                 "data": {
                     "paging": {
-                        "totalPages": totalPages,
-                        "pageNumber": page,
+                        "total": totalPages,
+                        "current_page": page,
                         "per_page": transactions.rows.length
                     }
                 },
