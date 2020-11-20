@@ -16,6 +16,7 @@ run: npm start
 
 open browser and enter localhost:4200
 to retrieve transactions, press on Get Transactions button
+press on page numbers or next to use the pagination option 
 to change query parameters, go to angular-app/src/app/services/random-user.service.ts and change per_page, seller_id parameters in th url on line 15
 
 For Testing:
